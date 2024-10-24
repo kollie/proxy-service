@@ -12,20 +12,11 @@ async def proxy_upload_file(file: UploadFile = File(...)):
     """
     Proxy endpoint to upload a file to S3.
 
-    Args:
-        file (UploadFile): The file to be uploaded.
-
-    Returns:
-        dict: A message indicating the success of the upload.
-
-    Raises:
-        HTTPException: Exception to handle error while uploading the file.
-    
-    Bucket Name:
-        The S3 bucket name where the file will be uploaded.
-    
-    Unique Filename:
-        The unique file name is generated using uuid to avoid file naming confict in s3.
+    Description:
+        file (str): the file to be uploaded.
+        unique_filename (str): then name of the file, unique to avoid name conflict in s3.
+        BUCKET_NAME: the file s3 destination of the file.
+        HTTPException: raises errors in the case the file is not found
     """
     try:
         file_extension = os.path.splitext(file.filename)[1]
@@ -37,22 +28,15 @@ async def proxy_upload_file(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"an error occured while uploading the file '{str(e)}'")
 
-@app.get("/proxy/download/{file_name}")
+@app.get("/proxy/download/{file_name}", tags=["Download File"])
 async def proxy_download_file(file_name: str):
     """
     Proxy endpoint to download a file from S3.
 
-    Args:
-        file_name (str): The name of the file to be downloaded.
-
-    Returns:
-        StreamingResponse: The file content as a streaming response.
-
-    Raises:
-        HTTPException: If the file is not found, AWS credentials are not found or incomplete, or any other exception occurs.
-    
-    Bucket Name:
-        The S3 bucket name from where the file will be downloaded.
+    Description:
+        file_name (str): the file to be downloaded.
+        BUCKET_NAME: the file s3 destination of the file.
+        HTTPException: raises errors in the case the file is not found
     """
     try:
         file_obj = s3_client.get_object(Bucket=BUCKET_NAME, Key=file_name)

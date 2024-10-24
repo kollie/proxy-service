@@ -68,5 +68,7 @@ curl -X 'GET' \
     'http://127.0.0.1:8000/proxy/download/your-file-name' \
     -H 'accept: application/octet-stream'
 
+Direct download using a web browser
+http://127.0.0.1:8000/proxy/download/your-file-name
 
 
