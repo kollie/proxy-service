@@ -27,7 +27,7 @@ This project provides a proxy service for uploading and downloading files to and
 2. **Create Virtual Environment**:
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    source venv/bin/activate  
 
 3. **Install Dependencies**
     ```bash
@@ -44,5 +44,29 @@ This project provides a proxy service for uploading and downloading files to and
 5. **Runing The Service Locally**
     ```bash
     uvicorn main:app --reload
+
+### Testing
+You can test the service locally with the swagger UI or using cur
+
+http://127.0.0.1:8000/docs
+
+![Upload File](https://github.com/kollie/proxy-service/blob/main/image/Screenshot%202024-10-24%20at%2015.02.20.png?raw=true)
+
+![Download File](https://github.com/kollie/proxy-service/blob/main/image/Screenshot%202024-10-24%20at%2015.03.58.png?raw=true)
+
+### Upload
+    ```base
+    curl -X 'POST' \
+        'http://127.0.0.1:8000/proxy/upload/' \
+        -H 'accept: application/json' \
+        -H 'Content-Type: multipart/form-data' \
+        -F 'file=@path/to/your/file'
+
+### Download
+```bash
+curl -X 'GET' \
+    'http://127.0.0.1:8000/proxy/download/your-file-name' \
+    -H 'accept: application/octet-stream'
+
 
 
