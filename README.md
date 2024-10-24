@@ -43,7 +43,7 @@ This project provides a proxy service for uploading and downloading files to and
 
 5. **Runing The Service Locally**
     ```bash
-    uvicorn main:app --reload
+    uvicorn app:app --reload
 
 ### Testing
 You can test the service locally with the swagger UI or using cur
