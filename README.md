@@ -13,10 +13,6 @@ This project provides a proxy service for uploading and downloading files to and
 
 - Python 3.7+
 
-### AWS Account
-- AWS account with S3 and IAM permissions
-- AWS CLI configured with your credentials
-
 ### Installation
 
 1. **Clone the repository**:
