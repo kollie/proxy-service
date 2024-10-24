@@ -1,6 +1,6 @@
 #  Proxy Service for S3 with FastAPI
 
-This project provides a proxy service for uploading and downloading files to and from AWS S3. The service is built using FastAPI and Boto3, and it is deployed on AWS Elastic Beanstalk with a CI/CD pipeline integrated with GitHub.
+This project provides a proxy service for uploading and downloading files to and from AWS S3. The service is built using FastAPI and Boto3.
 
 ## Features
 
