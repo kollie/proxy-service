@@ -15,8 +15,8 @@ async def proxy_upload_file(file: UploadFile = File(...)):
     Description:
         file (str): the file to be uploaded.
         unique_filename (str): then name of the file, unique to avoid name conflict in s3.
-        BUCKET_NAME: the file s3 destination of the file.
-        HTTPException: raises errors in the case the file is not found
+        BUCKET_NAME: the s3 destination of the file.
+        HTTPException: raises errors in the case the file was not uploaded
     """
     try:
         file_extension = os.path.splitext(file.filename)[1]
