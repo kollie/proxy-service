@@ -62,6 +62,6 @@ async def proxy_download_file(file_name: str):
     except NoCredentialsError:
         raise HTTPException(status_code=403, detail="there was an error with your aws credentials")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"an error occured while uploading the file '{str(e)}'")
+        raise HTTPException(status_code=500, detail=f"an error occured while downloading the file '{str(e)}'")
 
 
